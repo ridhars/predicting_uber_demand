@@ -40,7 +40,7 @@ Under the hood, SARIMAX only supports one seasonality. Two workarounds were atte
 
 On the other hand, Prophet can be customised with as many seasonalities as needed. Additionally, it allows exclusion of outliers (e.g. public holidays) from the seasonality pattern. This flexibility allowed to produce forecasting result as shown below.
 
-Img
+![Forecast](https://github.com/ridhars/predicting_uber_demand/blob/master/image/Screen%20Shot%202018-09-18%20at%2011.03.41%20PM.png?raw=true)
 
 The model predicts the hourly fluctuations quite well while also able to distinguish weekdays vs. weekends pattern. However, by Sunday afternoon, it fails to predict a surge. Upon checking historical data, this surge does not typically occur in Sunday afternoon. A quick googling revealed that this date corresponds to the Puerto Rican Day Parade in New York, which explains the surge.
 
