@@ -32,21 +32,23 @@ Aside from the generic preprocessing steps, one that rather need to be informed 
 
 #### 3. Modelling
 
-Two models were experimented, SARIMAX and Facebook Prophet. Both models allow the usage of additional features such as weather to be included as regressor. Initially three types of weather data were used; temperature, wind speed, and one-hot encoded weather description flags. After experimenting, only temperature and ‘heavy intensity rain’ flag were kept for the final model as these two features were the only ones that improved prediction for both SARIMAX and Prophet.
+Two models were developed, SARIMAX and Facebook Prophet. Both models allow the usage of additional features such as weather to be included as regressor. Initially three types of weather data were used; temperature, wind speed, and one-hot encoded weather description flags. After experimenting, only temperature and ‘heavy intensity rain’ flag were kept for the final model as these two features were the ones that improved prediction for both SARIMAX and Prophet.
 
 Between SARIMAX and Prophet, the best result was achieved by using Prophet. 
 
 Under the hood, SARIMAX only supports one seasonality. Two workarounds were attempted; first by using only weekly seasonality (lags of 7 * 24 hourly data points) and secondly using daily seasonality (lags of 24 hourly data points) + day-of-week flags. The first method was very computationally heavy to the point it consistently crashed the machine. The second method only improved the prediction marginally.
 
-On the other hand, Prophet can be customised with as many seasonalities as needed. Additionally, it allows exclusion of outliers (e.g. public holidays) from the seasonality pattern. This flexibility allowed to produce forecasting result as shown below.
+On the other hand, Prophet can be customised with as many seasonalities as needed. Additionally, it allows exclusion of outliers (e.g. public holidays) from the seasonality pattern. This flexibility allows Prophet to produce forecasting result as shown below.
 
 ![Forecast](https://github.com/ridhars/predicting_uber_demand/blob/master/image/Screen%20Shot%202018-09-18%20at%2011.03.41%20PM.png?raw=true)
 
-The model predicts the hourly fluctuations quite well while also able to distinguish weekdays vs. weekends pattern. However, by Sunday afternoon, it fails to predict a surge. Upon checking historical data, this surge does not typically occur in Sunday afternoon. A quick googling revealed that this date corresponds to the Puerto Rican Day Parade in New York, which explains the surge.
+The model predicts the hourly fluctuations quite well while also able to distinguish weekdays vs. weekends pattern. However, by Sunday afternoon, it fails to predict a surge. Upon checking historical data, this surge does not typically occur in Sunday afternoon. A quick googling revealed that this date corresponds to the Puerto Rican Day Parade in New York, which explains the irregular surge.
 
 **Final Model**
 
 For one week forecast, which predicts 7 * 24 future data points, the best model achieved 498 trips/hour RMSE and 15% MAPE. The next step is to breakdown this model into neighbourhood level. In total, there are 262 New York neighborhoods. The result is then visualised into Tableau dashboard, as shown below.
+
+![Dashboard](https://github.com/ridhars/predicting_uber_demand/blob/master/image/Screen%20Shot%202018-09-18%20at%2011.14.40%20PM.png?raw=true)
 
 ### Improvements
 
