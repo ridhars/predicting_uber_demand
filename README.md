@@ -32,6 +32,33 @@ Aside from the generic preprocessing steps, one that rather need to be informed 
 
 #### 3. Modelling
 
-Two models were experimented, SARIMAX and Facebook Prophet. Both models allow the usage of additional features such as weather to be included as regressor. After experimenting, 
+Two models were experimented, SARIMAX and Facebook Prophet. Both models allow the usage of additional features such as weather to be included as regressor. Initially three types of weather data were used; temperature, wind speed, and one-hot encoded weather description flags. After experimenting, only temperature and ‘heavy intensity rain’ flag were kept for the final model as these two features were the only ones that improved prediction for both SARIMAX and Prophet.
 
+Between SARIMAX and Prophet, the best result was achieved by using Prophet. 
+
+Under the hood, SARIMAX only supports one seasonality. Two workarounds were attempted; first by using only weekly seasonality (lags of 7 * 24 hourly data points) and secondly using daily seasonality (lags of 24 hourly data points) + day-of-week flags. The first method was very computationally heavy to the point it consistently crashed the machine. The second method only improved the prediction marginally.
+
+On the other hand, Prophet can be customised with as many seasonalities as needed. Additionally, it allows exclusion of outliers (e.g. public holidays) from the seasonality pattern. This flexibility allowed to produce forecasting result as shown below.
+
+Img
+
+The model predicts the hourly fluctuations quite well while also able to distinguish weekdays vs. weekends pattern. However, by Sunday afternoon, it fails to predict a surge. Upon checking historical data, this surge does not typically occur in Sunday afternoon. A quick googling revealed that this date corresponds to the Puerto Rican Day Parade in New York, which explains the surge.
+
+**Final Model**
+
+For one week forecast, which predicts 7 * 24 future data points, the best model achieved 498 trips/hour RMSE and 15% MAPE. The next step is to breakdown this model into neighbourhood level. In total, there are 262 New York neighborhoods. The result is then visualised into Tableau dashboard, as shown below.
+
+### Improvements
+
+#### 1. Predicting irregular surge
+
+The Sunday afternoon surge we’ve seen earlier was related to event that occurred on that particular day. In order to overcome this, I plan to include local event / calendar data as additional features. However event flag alone will not be enough, as the model requires continuous data to predict the magnitude of the event. One that I can think of is to use venue’s capacity as a proxy, but this would not solve the Puerto Rican Day Parade we have seen before — because the venue is the city itself.
+
+#### 2. Weather forecast as features
+
+Currently in this model I simply included historical weather data as features. Realistically, these data will not be available until after we’ve gone past the day. The weather will also need to be forecasted first, then included as features in the main model.
+
+#### 3. Sub-Neighborhood granularity
+
+Currently, the model can only forecast on neighbourhood level. For some larger neighbourhoods, this may not be suitable because drivers need to know 
 
