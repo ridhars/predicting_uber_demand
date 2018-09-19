@@ -54,7 +54,7 @@ For one week forecast, which predicts 7 * 24 future data points, the best model 
 
 #### 1. Predicting irregular surge
 
-The Sunday afternoon surge we’ve seen earlier was related to event that occurred on that particular day. In order to overcome this, I plan to include local event / calendar data as additional features. However event flag alone will not be enough, as the model requires continuous data to predict the magnitude of the event. One that I can think of is to use venue’s capacity as a proxy, but this would not solve the Puerto Rican Day Parade we have seen before — because the venue is the city itself.
+The Sunday afternoon surge we’ve seen earlier was related to event that occurred on that particular day. In order to overcome this, I plan to include local event / calendar data as additional features. However event flag alone will not be enough, as the model requires continuous data to predict the magnitude of the event. One that I can think of is to use venue’s capacity as a proxy, but this would still not solve the Puerto Rican Day Parade we have seen before — because the venue is the city itself.
 
 #### 2. Weather forecast as features
 
@@ -62,5 +62,5 @@ Currently in this model I simply included historical weather data as features. R
 
 #### 3. Sub-Neighborhood granularity
 
-Currently, the model can only forecast on neighbourhood level. For some larger neighbourhoods, this may not be suitable because drivers need to know 
+Currently, the model can only forecast on neighbourhood level. For some larger neighbourhoods, this may not be suitable because drivers need to ensure they are in a location within the reach of incoming rides. By clustering blocks within neighbourhood, we can create a lower-level prediction. To do this properly, the first step is to learn the maximum radius that a driver can receive incoming rides. Afterwards, we can adjust the clustering area accordingly.
 
