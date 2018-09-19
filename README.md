@@ -1,5 +1,7 @@
 ## Project 5 Summary - Predicting Uber Demand
 
+[Presentation Deck](https://docs.google.com/presentation/d/1njmqChgvC210yJwYXLsWl53AuuQIwZqihHa1YBk9FsA/edit?usp=sharing)
+
 ### Project Design
 
 Today, ride-hailing service has become considered a common option of transportation. Particulary in short to medium remote-to-remote trips, ride-hail service provider such as Uber is increasingly popular. This in turn attracts more and more people to become Uber drivers, which reportedly to have grown at exponential rate since 2014 according to Uber site. For customers, it made finding Uber rides much more convenient. But for drivers, especially today with over-saturated Uber drivers -- not to mention competition -- it made finding customers significantly more difficult.
