@@ -22,7 +22,7 @@ Data are stored in PostgresSQL database in AWS while preprocessing & model build
 
 The most important information inferred during EDA is the time series' seasonality. As shown below, we can recognize two type of seasonalities; daily seasonality and weekly seasonality. 
 
-![Seasonalities](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Seasonalities](https://github.com/ridhars/predicting_uber_demand/blob/master/image/Screen%20Shot%202018-09-18%20at%2011.04.31%20PM.png?raw=true)
 
 The daily seasonality is shown by the hourly fluctuations of the trips. Looking at the orange plot, it peaks at 8AM (morning rush hour) and 7PM (evening rush hour) -- which is something expected. However, we have different behavior during weekends, shown by blue plot. It has no morning peak, but rather builds up slowly until it reached the peak at 7PM. These two different behaviour suggest we have weekly seasonality, or in particular weekday vs. weekend pattern.
 
