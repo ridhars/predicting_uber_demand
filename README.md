@@ -12,11 +12,13 @@ As someone who occasionally drives Uber, the most common question that often cam
 In this project, I aim to gain information on estimated trips given a specific time in the future by building a time series forecasting model. The output of the model is the number of estimated trips at hourly rate on neighborhood level.
   
   
+  
 ### Data & Tools
 
 To build the model, 2015 New York historical Uber trips were used from publicly available NYC Taxi & Limousine Commision. The dataset contains 14.3 million trips from Jan - June 2015, each described by pickup timestamp and pickup geolocation. To improve prediction power, historical weather data were also taken from Open Weather Map. The data contains hourly temperature, wind speed, and weather condition flags.
 
 Data are stored in PostgresSQL database in AWS while preprocessing & model building are carried out locally in iPython Jupyter Notebook. To aid visualization, dashboard were created in Tableau.
+  
   
   
 ### Algorithms
@@ -52,7 +54,9 @@ The model predicts the hourly fluctuations quite well while also able to disting
 For one week forecast, which predicts 7 * 24 future data points, the best model achieved 498 trips/hour RMSE and 15% MAPE. The next step is to breakdown this model into neighbourhood level. In total, there are 262 New York neighborhoods. The result is then visualised into Tableau dashboard, as shown below.
 
 ![Dashboard](https://github.com/ridhars/predicting_uber_demand/blob/master/image/Screen%20Shot%202018-09-18%20at%2011.14.40%20PM.png?raw=true)
-
+  
+  
+  
 ### Improvements
 
 #### 1. Predicting irregular surge
