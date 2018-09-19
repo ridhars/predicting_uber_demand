@@ -65,5 +65,5 @@ Currently in this model I simply included historical weather data as features. R
 
 #### 3. Sub-Neighborhood granularity
 
-Currently, the model can only forecast on neighbourhood level. For some larger neighbourhoods, this may not be suitable because drivers need to ensure they are in a location within the reach of incoming rides. By clustering blocks within neighbourhood, we can create a lower-level prediction. To do this properly, the first step is to learn the maximum radius that a driver can receive incoming rides. Afterwards, we can adjust the clustering area accordingly.
+Currently, the model can only forecast on neighbourhood level. For some larger neighbourhoods, this may not be suitable because drivers need to ensure they are in a location within the reach of incoming ride requests. By clustering blocks within neighbourhood, we can create a lower-level prediction. To do this properly, the first step is to learn the maximum radius that the Uber driver app can receive incoming ride requests. Afterwards, we can adjust the clustering area accordingly.
 
